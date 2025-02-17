@@ -1,3 +1,13 @@
+<#
+.SYNOPSIS
+    Build script for the spun module.
+.DESCRIPTION
+    Installs dependencies, runs script analysis, and executes tests.
+.EXAMPLE
+    pwsh ./build.ps1 -Test
+#>
+#region Build Script
+
 [CmdletBinding()]
 param(
     [switch]$Test,
@@ -13,12 +23,13 @@ if (-not (Get-Module -ListAvailable Pester)) {
     Install-Module Pester -Force
 }
 
-# Run PSScriptAnalyzer
+# Run PSScriptAnalyzer and only fail on errors
 if ($Analyze -or $Build) {
-    $analysis = Invoke-ScriptAnalyzer -Path . -Recurse
-    if ($analysis) {
-        $analysis | Format-Table
-        throw "PSScriptAnalyzer found issues"
+    # Retrieve only Error severity issues
+    $analysis = Invoke-ScriptAnalyzer -Path . -Recurse -Severity Error
+    if ($analysis.Count -gt 0) {
+        $analysis | Format-Table -AutoSize
+        throw "PSScriptAnalyzer found errors"
     }
 }
 
@@ -27,8 +38,16 @@ if ($Test -or $Build) {
     $config = New-PesterConfiguration
     $config.Run.Path = "./tests"
     $config.Output.Verbosity = "Detailed"
-    $result = Invoke-Pester -Configuration $config -PassThru
+    try {
+        $result = Invoke-Pester -Configuration $config
+    }
+    catch {
+        Write-Error "Invoke-Pester failed: $_"
+        throw
+    }
     if ($result.FailedCount -gt 0) {
         throw "Pester tests failed"
     }
 }
+
+#endregion

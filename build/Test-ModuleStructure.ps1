@@ -1,3 +1,13 @@
+<#
+.SYNOPSIS
+    Validates the module structure.
+.DESCRIPTION
+    Checks that required files and directories exist and validates the module manifest.
+.EXAMPLE
+    ./build/Test-ModuleStructure.ps1 -Verbose
+#>
+#region Module Structure Validation
+
 [CmdletBinding()]
 param()
 
@@ -45,3 +55,5 @@ if ($publicFunctions.Count -eq 0) {
 }
 
 Write-Host "✓ Module structure validation passed" -ForegroundColor Green
+
+#endregion

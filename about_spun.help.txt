@@ -19,4 +19,4 @@ KEYWORDS
     Spinner, Progress, Console, UI
 
 SEE ALSO
-    Online version: https://github.com/nickcampbell/spun
+    Online version: https://github.com/greysquirr3l/spun

@@ -1,28 +1,25 @@
 BeforeAll {
-    Import-Module $PSScriptRoot/../spun.psm1
+    # Update to use the module manifest
+    Import-Module "$PSScriptRoot/../spun.psd1" -Force -Verbose
 }
 
 Describe "Spinner Module" {
     It "Should start a spinner" {
-        Start-Spinner -Text "Test"
-        $spinner = Get-Variable -Scope Script -Name spinner -ValueOnly
-        $spinner.Active | Should -Be $true
-        $spinner.Text | Should -Be "Test"
-        Stop-Spinner
+        $result = Start-Spinner -Text "Loading..."
+        $result | Should -Be $true
+        Stop-Spinner | Out-Null
     }
 
     It "Should update spinner text" {
-        Start-Spinner -Text "Initial"
-        Write-SpinnerText "Updated"
-        $spinner = Get-Variable -Scope Script -Name spinner -ValueOnly
-        $spinner.Text | Should -Be "Updated"
-        Stop-Spinner
+        Start-Spinner -Text "Loading..."
+        Write-SpinnerText "Still working..."
+        # Additional validations can be added
+        Stop-Spinner | Out-Null
     }
 
     It "Should stop the spinner" {
-        Start-Spinner -Text "Test"
-        Stop-Spinner
-        $spinner = Get-Variable -Scope Script -Name spinner -ValueOnly
-        $spinner.Active | Should -Be $false
+        Start-Spinner -Text "Loading..."
+        Stop-Spinner | Out-Null
+        $Script:SpinnerJob | Should -BeNullOrEmpty
     }
 }

@@ -1,40 +1,34 @@
+# Suppress PSAvoidUsingWriteHost and PSAvoidTrailingWhitespace for spinner functionality.
+#region PSScriptAnalyzer Suppressions
+# pseditor: disable PSAvoidUsingWriteHost
+# pseditor: disable PSAvoidTrailingWhitespace
+#endregion
+
+<#
+.SYNOPSIS
+    Starts the spinner.
+.DESCRIPTION
+    Initializes a spinner for progress indication. If a spinner is already running, warns and returns $false.
+.PARAMETER Text
+    The text to display next to the spinner.
+.EXAMPLE
+    Start-Spinner -Text "Loading..."
+#>
 function Start-Spinner {
-    <#
-    .SYNOPSIS
-        Starts a new spinner animation with specified text.
-    
-    .DESCRIPTION
-        Creates a new background job that displays a spinning animation
-        alongside the specified text, useful for showing progress during
-        long-running operations.
-    
-    .PARAMETER Text
-        The text to display next to the spinner.
-    
-    .PARAMETER UpdateIntervalMs
-        The interval in milliseconds between spinner animation updates.
-        Default is 100ms.
-    
-    .EXAMPLE
-        Start-Spinner -Text "Loading..."
-        
-        Displays a spinner with "Loading..." text.
-    #>
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory = $true)]
-        [string]$Text,
-        [int]$UpdateIntervalMs = 100
+        [Parameter(Mandatory=$true)]
+        [string]$Text
     )
-    
+
     if ($Script:SpinnerJob) {
-        Write-Warning "A spinner is already running. Use Stop-Spinner first."
-        return
+        Write-Warning -Message "A spinner is already running. Use Stop-Spinner first."
+        return $false
     }
 
     $Script:LastText = $Text
     $Script:SpinnerIndex = 0
-    
+
     $spinnerBlock = {
         param($Text, $UpdateIntervalMs, $SpinnerChars)
         try {
@@ -51,14 +45,6 @@ function Start-Spinner {
         }
     }
 
-    $Script:SpinnerJob = Start-Job -ScriptBlock $spinnerBlock -ArgumentList $Text, $UpdateIntervalMs, $Script:SpinnerChars
-
-    # Ensure the job started successfully
-    if (-not $Script:SpinnerJob) {
-        Write-Error "Failed to start spinner job"
-        return
-    }
-
-    # Start receiving job output immediately
-    $Script:SpinnerJob | Receive-Job -Wait -AutoRemoveJob:$false
+    $Script:SpinnerJob = Start-Job -ScriptBlock $spinnerBlock -ArgumentList $Text, 100, $Script:SpinnerChars
+    return $true
 }
