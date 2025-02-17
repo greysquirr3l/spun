@@ -1,0 +1,22 @@
+TOPIC
+    about_spun
+
+SHORT DESCRIPTION
+    A minimalist PowerShell spinner module for displaying progress during long-running operations.
+
+LONG DESCRIPTION
+    The spun module provides a simple way to show spinning progress indicators in
+    PowerShell scripts. It's useful for providing visual feedback during long-running
+    operations without the overhead of Write-Progress.
+
+EXAMPLES
+    Start-Spinner -Text "Loading..."
+    Start-Sleep -Seconds 2
+    Write-SpinnerText "Still working..."
+    Stop-Spinner
+
+KEYWORDS
+    Spinner, Progress, Console, UI
+
+SEE ALSO
+    Online version: https://github.com/nickcampbell/spun
