@@ -1,5 +1,5 @@
 @{
-    RootModule = 'src/spun.psm1'
+    RootModule = 'spun.psm1'
     ModuleVersion = '0.1.0'
     GUID = '12345678-1234-1234-1234-123456789012'
     Author = 'greysquirr3l'
