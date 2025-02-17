@@ -37,16 +37,17 @@ if ($Analyze -or $Build) {
 if ($Test -or $Build) {
     $config = New-PesterConfiguration
     $config.Run.Path = "./tests"
+    $config.Run.TestExtension = ".Tests.ps1"
     $config.Output.Verbosity = "Detailed"
     try {
-        $result = Invoke-Pester -Configuration $config
+        $result = Invoke-Pester -Configuration $config -PassThru
+        if ($result.FailedCount -gt 0) {
+            throw "$($result.FailedCount) tests failed."
+        }
     }
     catch {
-        Write-Error "Invoke-Pester failed: $_"
+        Write-Error "Pester tests failed: $_"
         throw
-    }
-    if ($result.FailedCount -gt 0) {
-        throw "Pester tests failed"
     }
 }
 

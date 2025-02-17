@@ -6,8 +6,12 @@
     CompanyName = 'Your Company'
     Description = 'A minimalist spinner module.'
     PowerShellVersion = '5.1'
-    # Export public functions
-    FunctionsToExport = @('Start-Spinner', 'Stop-Spinner', 'Write-SpinnerText')
+    FunctionsToExport = @(
+        'Start-Spinner',
+        'Write-SpinnerText',
+        'Stop-Spinner',
+        'Invoke-SpinningActivity'  # Ensure this new function is exported
+    )
     PrivateData = @{
         PSData = @{
             Tags = @('spinner', 'progress', 'console')

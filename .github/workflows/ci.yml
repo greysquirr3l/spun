@@ -53,8 +53,12 @@ jobs:
       run: |
         $config = New-PesterConfiguration
         $config.Run.Path = "./tests"
+        $config.Run.TestExtension = ".Tests.ps1"
         $config.Output.Verbosity = "Detailed"
-        Invoke-Pester -Configuration $config
+        $result = Invoke-Pester -Configuration $config -PassThru
+        if ($result.FailedCount -gt 0) {
+            throw "$($result.FailedCount) tests failed."
+        }
 
     - name: Validate Module Structure
       shell: pwsh
@@ -65,3 +69,11 @@ jobs:
       shell: pwsh
       run: |
         Import-Module ./spun.psd1 -Force -Verbose
+
+    - name: Generate Shasum
+      shell: pwsh
+      run: |
+        $hash = Get-FileHash -Path "./spun.psd1" -Algorithm SHA256
+        $hash | Format-List | Out-File -FilePath shasum.txt
+        Write-Host "SHA256 of spun.psd1:"
+        Get-Content -Path shasum.txt

@@ -1,4 +1,19 @@
+# Build artifacts and outputs
 *.nupkg
+shasum.txt
+build/
+
+# IDE and editor settings
 .vscode/
 .idea/
 .DS_Store
+
+# Test result logs and temporary files
+*.log
+*.tmp
+
+# Publishing output folders (if applicable)
+dist/
+
+# Other
+spun.yml

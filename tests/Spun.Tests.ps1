@@ -35,11 +35,20 @@ Describe "Spun Module Tests" {
             Stop-Spinner | Out-Null
         }
 
-        It "Warns when no spinner is running" {
-            $warningMsg = $null
-            Write-SpinnerText -Text "Test" -WarningVariable warningMsg -WarningAction SilentlyContinue
-            $warningMsg | Should -BeLike "*No spinner is currently running*"
+        #region Write-SpinnerText Tests
+        <#
+            Previously, the test expected a warning, but the function now returns $null.
+            Update the test to capture the expected warning message.
+        #>
+        It "warns when no spinner is running" {
+            # Capture warnings emitted from Write-SpinnerText
+            $warnings = & {
+                $WarningPreference = "Continue"
+                Write-SpinnerText "TestSpinner" 2>&1
+            }
+            $warnings -join "`n" | Should -Match "No spinner is currently running"
         }
+        #endregion
     }
 
     Context "Stop-Spinner" {
