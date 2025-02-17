@@ -35,7 +35,8 @@ if ($Analyze -or $Build) {
 
 # Run Pester tests
 if ($Test -or $Build) {
-    $config = [PesterConfiguration]::Default
+    Import-Module Pester -MinimumVersion 5.0.0 -Force
+    $config = New-PesterConfiguration
     $config.Run.Path = "./tests"
     $config.Run.Exit = $true
     $config.TestResult.Enabled = $true

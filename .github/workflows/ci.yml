@@ -37,7 +37,8 @@ jobs:
     - name: Install Pester
       shell: pwsh
       run: |
-        Install-Module -Name Pester -Force -SkipPublisherCheck
+        Install-Module -Name Pester -MinimumVersion 5.0.0 -Force -SkipPublisherCheck
+        Import-Module Pester -MinimumVersion 5.0.0 -Force
 
     - name: Run PSScriptAnalyzer
       shell: pwsh
@@ -51,7 +52,8 @@ jobs:
     - name: Run Tests
       shell: pwsh
       run: |
-        $config = [PesterConfiguration]::Default
+        Import-Module Pester -MinimumVersion 5.0.0 -Force
+        $config = New-PesterConfiguration
         $config.Run.Path = "./tests"
         $config.Run.Exit = $true
         $config.TestResult.Enabled = $true

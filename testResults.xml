@@ -1,42 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="11" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2025-02-17" time="12:27:45">
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="11" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2025-02-17" time="12:30:10">
   <environment platform="Darwin" os-version="24.3.0" user-domain="" cwd="/Users/nickcampbell/Projects/powershell-modules/spun" nunit-version="2.5.8.0" machine-name="saudade.local" clr-version="9.0.1" user="nickcampbell" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="6.2729" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="6.2891" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="/Users/nickcampbell/Projects/powershell-modules/spun/tests/Invoke-SpinningActivity.Tests.ps1" executed="True" result="Success" success="True" time="6.2353" asserts="0" description="/Users/nickcampbell/Projects/powershell-modules/spun/tests/Invoke-SpinningActivity.Tests.ps1">
+      <test-suite type="TestFixture" name="/Users/nickcampbell/Projects/powershell-modules/spun/tests/Invoke-SpinningActivity.Tests.ps1" executed="True" result="Success" success="True" time="6.2304" asserts="0" description="/Users/nickcampbell/Projects/powershell-modules/spun/tests/Invoke-SpinningActivity.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Invoke-SpinningActivity Function Tests" executed="True" result="Success" success="True" time="6.2237" asserts="0" description="Invoke-SpinningActivity Function Tests">
+          <test-suite type="TestFixture" name="Invoke-SpinningActivity Function Tests" executed="True" result="Success" success="True" time="6.2196" asserts="0" description="Invoke-SpinningActivity Function Tests">
             <results>
-              <test-case description="executes the action and cleans up the background job" name="Invoke-SpinningActivity Function Tests.executes the action and cleans up the background job" time="1.22" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="runs with spinner styling options (Prefix, Suffix, Bold, Underline, Elapsed)" name="Invoke-SpinningActivity Function Tests.runs with spinner styling options (Prefix, Suffix, Bold, Underline, Elapsed)" time="1.2293" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="runs with progress bar style without gradient" name="Invoke-SpinningActivity Function Tests.runs with progress bar style without gradient" time="1.2413" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="runs with gradient progress bar and custom gradient" name="Invoke-SpinningActivity Function Tests.runs with gradient progress bar and custom gradient" time="1.2425" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="runs with a theme preset" name="Invoke-SpinningActivity Function Tests.runs with a theme preset" time="1.2856" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="executes the action and cleans up the background job" name="Invoke-SpinningActivity Function Tests.executes the action and cleans up the background job" time="1.2348" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="runs with spinner styling options (Prefix, Suffix, Bold, Underline, Elapsed)" name="Invoke-SpinningActivity Function Tests.runs with spinner styling options (Prefix, Suffix, Bold, Underline, Elapsed)" time="1.2397" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="runs with progress bar style without gradient" name="Invoke-SpinningActivity Function Tests.runs with progress bar style without gradient" time="1.2443" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="runs with gradient progress bar and custom gradient" name="Invoke-SpinningActivity Function Tests.runs with gradient progress bar and custom gradient" time="1.2489" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="runs with a theme preset" name="Invoke-SpinningActivity Function Tests.runs with a theme preset" time="1.2497" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/Users/nickcampbell/Projects/powershell-modules/spun/tests/Spun.Tests.ps1" executed="True" result="Success" success="True" time="0.0376" asserts="0" description="/Users/nickcampbell/Projects/powershell-modules/spun/tests/Spun.Tests.ps1">
+      <test-suite type="TestFixture" name="/Users/nickcampbell/Projects/powershell-modules/spun/tests/Spun.Tests.ps1" executed="True" result="Success" success="True" time="0.0587" asserts="0" description="/Users/nickcampbell/Projects/powershell-modules/spun/tests/Spun.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Spun Module Tests" executed="True" result="Success" success="True" time="0.0243" asserts="0" description="Spun Module Tests">
+          <test-suite type="TestFixture" name="Spun Module Tests" executed="True" result="Success" success="True" time="0.0345" asserts="0" description="Spun Module Tests">
             <results>
-              <test-suite type="TestFixture" name="Spun Module Tests.Start-Spinner" executed="True" result="Success" success="True" time="0.0093" asserts="0" description="Spun Module Tests.Start-Spinner">
+              <test-suite type="TestFixture" name="Spun Module Tests.Start-Spinner" executed="True" result="Success" success="True" time="0.0178" asserts="0" description="Spun Module Tests.Start-Spinner">
                 <results>
-                  <test-case description="Creates a new spinner job" name="Spun Module Tests.Start-Spinner.Creates a new spinner job" time="0.0033" asserts="0" success="True" result="Success" executed="True" />
-                  <test-case description="Warns when starting multiple spinners" name="Spun Module Tests.Start-Spinner.Warns when starting multiple spinners" time="0.0022" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Creates a new spinner job" name="Spun Module Tests.Start-Spinner.Creates a new spinner job" time="0.0073" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Warns when starting multiple spinners" name="Spun Module Tests.Start-Spinner.Warns when starting multiple spinners" time="0.0051" asserts="0" success="True" result="Success" executed="True" />
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="Spun Module Tests.Write-SpinnerText" executed="True" result="Success" success="True" time="0.0161" asserts="0" description="Spun Module Tests.Write-SpinnerText">
+              <test-suite type="TestFixture" name="Spun Module Tests.Write-SpinnerText" executed="True" result="Success" success="True" time="0.0266" asserts="0" description="Spun Module Tests.Write-SpinnerText">
                 <results>
-                  <test-case description="Updates spinner text" name="Spun Module Tests.Write-SpinnerText.Updates spinner text" time="0.0017" asserts="0" success="True" result="Success" executed="True" />
-                  <test-case description="warns when no spinner is running" name="Spun Module Tests.Write-SpinnerText.warns when no spinner is running" time="0.0013" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Updates spinner text" name="Spun Module Tests.Write-SpinnerText.Updates spinner text" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="warns when no spinner is running" name="Spun Module Tests.Write-SpinnerText.warns when no spinner is running" time="0.0022" asserts="0" success="True" result="Success" executed="True" />
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="Spun Module Tests.Stop-Spinner" executed="True" result="Success" success="True" time="0.0232" asserts="0" description="Spun Module Tests.Stop-Spinner">
+              <test-suite type="TestFixture" name="Spun Module Tests.Stop-Spinner" executed="True" result="Success" success="True" time="0.0321" asserts="0" description="Spun Module Tests.Stop-Spinner">
                 <results>
-                  <test-case description="Stops the spinner job" name="Spun Module Tests.Stop-Spinner.Stops the spinner job" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
-                  <test-case description="Handles multiple stop calls gracefully" name="Spun Module Tests.Stop-Spinner.Handles multiple stop calls gracefully" time="0.0017" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Stops the spinner job" name="Spun Module Tests.Stop-Spinner.Stops the spinner job" time="0.0018" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Handles multiple stop calls gracefully" name="Spun Module Tests.Stop-Spinner.Handles multiple stop calls gracefully" time="0.0011" asserts="0" success="True" result="Success" executed="True" />
                 </results>
               </test-suite>
             </results>
