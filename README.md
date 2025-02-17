@@ -18,7 +18,7 @@ Additionally, the module offers styling options such as prefix/suffix text, elap
 
 Below is a rendered GIF demonstrating several of the module’s features in action:
 
-![spun Demo](demo.gif)
+![spun Demo](ender1739811188813.gif)
 
 *Note: The demo GIF shows all options sequentially, including simple spinners with styling, various progress bars (standard, gradient, textual), and theme presets.*
 

@@ -28,27 +28,21 @@ Describe "Spun Module Tests" {
     }
 
     Context "Write-SpinnerText" {
+        BeforeEach {
+            Stop-Spinner -ErrorAction SilentlyContinue
+        }
+
         It "Updates spinner text" {
             Start-Spinner -Text "Loading..."
             Write-SpinnerText "Still working..."
-            # Additional validations as needed
-            Stop-Spinner | Out-Null
+            Stop-Spinner
         }
 
-        #region Write-SpinnerText Tests
-        <#
-            Previously, the test expected a warning, but the function now returns $null.
-            Update the test to capture the expected warning message.
-        #>
         It "warns when no spinner is running" {
-            # Capture warnings emitted from Write-SpinnerText
-            $warnings = & {
-                $WarningPreference = "Continue"
-                Write-SpinnerText "TestSpinner" 2>&1
-            }
-            $warnings -join "`n" | Should -Match "No spinner is currently running"
+            $warning = $null
+            Write-SpinnerText "Test" -WarningVariable warning -WarningAction SilentlyContinue
+            $warning | Should -Match "No spinner is currently running"
         }
-        #endregion
     }
 
     Context "Stop-Spinner" {

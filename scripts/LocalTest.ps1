@@ -29,11 +29,15 @@ Import-Module ./spun.psd1 -Force -Verbose
 
 # Run Pester tests
 Write-Host "Running Pester tests..." -ForegroundColor Cyan
-$config = New-PesterConfiguration
+$config = [PesterConfiguration]::Default
 $config.Run.Path = "./tests"
-$config.Run.TestExtension = ".Tests.ps1"
-$config.Output.Verbosity = "Detailed"
+$config.Run.Exit = $true
+$config.TestResult.Enabled = $true
+$config.Output.Verbosity = 'Detailed'
 Invoke-Pester -Configuration $config
+if ($LASTEXITCODE -ne 0) {
+    throw "Pester tests failed with exit code: $LASTEXITCODE"
+}
 
 # Generate SHA256 hash for the module manifest
 Write-Host "Generating SHA256 hash for spun.psd1..." -ForegroundColor Cyan

@@ -35,19 +35,15 @@ if ($Analyze -or $Build) {
 
 # Run Pester tests
 if ($Test -or $Build) {
-    $config = New-PesterConfiguration
+    $config = [PesterConfiguration]::Default
     $config.Run.Path = "./tests"
-    $config.Run.TestExtension = ".Tests.ps1"
-    $config.Output.Verbosity = "Detailed"
-    try {
-        $result = Invoke-Pester -Configuration $config -PassThru
-        if ($result.FailedCount -gt 0) {
-            throw "$($result.FailedCount) tests failed."
-        }
-    }
-    catch {
-        Write-Error "Pester tests failed: $_"
-        throw
+    $config.Run.Exit = $true
+    $config.TestResult.Enabled = $true
+    $config.Output.Verbosity = 'Detailed'
+    
+    Invoke-Pester -Configuration $config
+    if ($LASTEXITCODE -ne 0) {
+        throw "Pester tests failed with exit code: $LASTEXITCODE"
     }
 }
 
